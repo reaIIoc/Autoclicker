@@ -18,7 +18,7 @@ def auto_clicker():
         if status == "disabled":
             exit()
         else:
-            pydirectinput.click(interval=0, clicks=100)
+            pydirectinput.click(interval=-0, clicks=100)
 
 
 def threads(key_log):
