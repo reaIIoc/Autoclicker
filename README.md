@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/b7c42c69-84bf-43f9-bdbd-be03a9f1110b)
+
 # Autoclicker
 Autoclicker made with pydirect input, tkinter and threading. 
 
