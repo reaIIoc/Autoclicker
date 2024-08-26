@@ -1,41 +1,34 @@
 # Autoclicker built with tkinter and pyautogui.
 
-# Solution for keeping screen on top was googled. ): (Line 38)
-
 import tkinter
 from tkinter import *
 import pydirectinput
 import time
 import threading
+import win32api
 
 
-version = "Autoclicker 1.0.0 | Maintained by coolpancakes"
-status = None
+version = "Autoclicker 1.0.1 | Maintained by coolpancakes"
+status = False
 
 
 def auto_clicker():
-    while True:
-        if status == "disabled":
-            exit()
-        else:
-            pydirectinput.click(interval=-0, clicks=100)
-
-
-def threads(key_log):
     global status
-    activation_key = str(key_log).split()[3]
-    activation_key = activation_key.strip("keysym=")
-    if activation_key == "F4":
-        status = "enabled"
-        auto = threading.Thread(target=auto_clicker)
-        auto.start()
-    elif activation_key == "F3":
-        status = "disabled"
+    while True:
+        parent = threading.main_thread()
+        parent_status = str(parent).split(",")[1]
+        key_press = win32api.GetKeyState(0x73)
+        status = key_press
+        if status == 0:
+            pass
+        elif "stopped" in parent_status:
+            quit()
+        elif status == 1:
+            pydirectinput.click(interval=-0, clicks=20)
 
 
 def main():
     root = Tk()
-    root.wm_attributes("-topmost", True)
     root.geometry("350x170")
     root.title("Autoclicker")
     root.iconbitmap("mouse.ico")
@@ -46,8 +39,9 @@ def main():
     # Start button
     start = Button(text="F4 | Start/Stop", bg="black", fg="grey", pady=10, padx=10)
 
-    # Bindings
-    root.bind("<Key>", threads)
+    # Call
+    check = threading.Thread(target=auto_clicker)
+    check.start()
 
     # Packed widgets
     version_info.pack(side=TOP, fill=X)
@@ -58,7 +52,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# Add a status label that tells the user if the autoclicker is enabled or not.
-# Fix the autoclicker, add functionality.
-# Clean the code up make it more readable (rewrite variable names)
