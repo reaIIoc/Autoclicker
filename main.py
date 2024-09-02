@@ -8,7 +8,7 @@ import threading
 import win32api
 
 
-version = "Autoclicker 1.0.1 | Maintained by coolpancakes"
+version = "Autoclicker 1.0.1 | Maintained by 0x4155"
 status = False
 
 
