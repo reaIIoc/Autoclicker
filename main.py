@@ -24,7 +24,7 @@ def auto_clicker():
         elif "stopped" in parent_status:
             quit()
         elif status == 1:
-            pydirectinput.click(interval=-0, clicks=20)
+            pydirectinput.click(interval=-0, clicks=1)
 
 
 def main():
