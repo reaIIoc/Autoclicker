@@ -36,14 +36,11 @@ def main():
     version_info = Label(text=version, padx=10, pady=10, fg="grey", bg="black")
     clicker_status = Label(text="", fg="grey", bg="black")
 
-    # Start button
     start = Button(text="F4 | Start/Stop", bg="black", fg="grey", pady=10, padx=10)
 
-    # Call
     check = threading.Thread(target=auto_clicker)
     check.start()
 
-    # Packed widgets
     version_info.pack(side=TOP, fill=X)
     clicker_status.pack(fill=X)
     start.pack(side=TOP)
