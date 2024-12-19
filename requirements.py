@@ -1,4 +1,8 @@
-import os
+import subprocess
 
-os.system("pip3 install pydirectinput")
-os.system("pip3 install pywin32")
+subprocess.run(["pip", "install", "pywin32"])
+subprocess.run(["pip", "install", "pydirectinput"])
+
+
+pywin32
+pydirectinput
