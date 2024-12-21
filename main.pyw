@@ -36,7 +36,7 @@ def main():
     version_info = Label(text=version, padx=10, pady=10, fg="grey", bg="black")
     clicker_status = Label(text="", fg="grey", bg="black")
 
-    start = Button(text="F4 | Start/Stop", bg="black", fg="grey", pady=10, padx=10)
+    start = Label(text="F4 | Start/Stop", bg="black", fg="grey", pady=10, padx=10)
 
     check = threading.Thread(target=auto_clicker)
     check.start()
