@@ -19,6 +19,7 @@ def auto_clicker():
         parent_status = str(parent).split(",")[1]
         key_press = win32api.GetKeyState(0x73)
         status = key_press
+        print(status)
         if status == 0:
             pass
         elif "stopped" in parent_status:
