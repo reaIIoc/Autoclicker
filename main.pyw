@@ -10,9 +10,36 @@ import win32api
 
 version = "Autoclicker 1.0.1 | Maintained by datarec"
 status = False
+clicks_interval = 0
+clicks_config = 0
+cc_count = 0
+ic_count = 0
+
+
+def read_config():
+    global ic_count
+    global cc_count
+    global clicks_config
+    global clicks_interval
+    with open("autoclicker.cfg", "r") as click_r:
+        for cclick in click_r:
+            setting = str(cclick).strip("click_interval clicks_per_interval =")
+            if cc_count == 1:
+                clicks_interval = setting
+                print(setting)
+            cc_count += 1
+    with open("autoclicker.cfg", "r") as click_i:
+        for iclick in click_i:
+            isetting = str(iclick).strip("click_interval clicks_per_interval =")
+            if ic_count == 2:
+                clicks_config = isetting
+                print(isetting)
+            ic_count += 1
+            
 
 
 def auto_clicker():
+    read_config()
     global status
     while True:
         parent = threading.main_thread()
@@ -24,7 +51,7 @@ def auto_clicker():
         elif "stopped" in parent_status:
             quit()
         elif status == 1:
-            pydirectinput.click(interval=-0, clicks=1)
+            pydirectinput.click(interval=int(clicks_interval), clicks=int(clicks_config))
 
 
 def main():
