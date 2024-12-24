@@ -26,14 +26,12 @@ def read_config():
             setting = str(cclick).strip("click_interval clicks_per_interval =")
             if cc_count == 1:
                 clicks_interval = setting
-                print(setting)
             cc_count += 1
     with open("autoclicker.cfg", "r") as click_i:
         for iclick in click_i:
             isetting = str(iclick).strip("click_interval clicks_per_interval =")
             if ic_count == 2:
                 clicks_config = isetting
-                print(isetting)
             ic_count += 1
             
 
@@ -49,9 +47,12 @@ def auto_clicker():
         if status == 0:
             pass
         elif "stopped" in parent_status:
+            print("yay")
             quit()
         elif status == 1:
-            pydirectinput.click(interval=int(clicks_interval), clicks=int(clicks_config))
+            #i_clicks_interval = int(clicks_interval)
+            i_clicks_config = int(clicks_config) 
+            pydirectinput.click(button="left", interval=0, clicks=i_clicks_config)
 
 
 def main():
