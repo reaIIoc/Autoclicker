@@ -12,5 +12,5 @@ Autoclicker made with pydirectinput, tkinter, threading and the pywin32 module.
 2. Close the tab when finished. 
 
 # Notes
-Please ensure python is installed or the script will not work. 
+Please ensure python is installed or the program will not work. 
 
